@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from datetime import datetime
+import json
 
 driver = webdriver.Chrome()
 driver.get('https://bookings.zenchef.com/results?rid=358407')
@@ -49,3 +50,11 @@ def check_available_dates(restaurant_url):
 # Example usage
 restaurant_url = 'https://bookings.zenchef.com/results?rid=358407'
 check_available_dates(restaurant_url)
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
