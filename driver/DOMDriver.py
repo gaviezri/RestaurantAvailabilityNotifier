@@ -6,6 +6,7 @@ from constants import Constants
 
 
 class DOMDriver:
+    driver2 = webdriver.Chrome()
     def __init__(self, url):
         self.url = url
         self.driver = webdriver.Chrome()
@@ -13,17 +14,17 @@ class DOMDriver:
         self.date_advanced = False
 
     def check_availability(self):
-        driver = self.driver
-        driver.refresh()
-        self.select_guests()
-        for date in Constants.dates:
-            self.select_date(date)
-            try:
-                driver.find_element(By.XPATH, "//div[contains(text(), 'service')]")
-                return True, date
-            except:
-                continue
-        return False, date
+        with self.driver as driver:
+            driver.refresh()
+            self.select_guests()
+            for date in Constants.dates:
+                self.select_date(date)
+                try:
+                    driver.find_element(By.XPATH, "//div[contains(text(), 'service')]")
+                    return True, date
+                except:
+                    continue
+            return False, date
 
     def select_date(self, date):
         driver = self.driver

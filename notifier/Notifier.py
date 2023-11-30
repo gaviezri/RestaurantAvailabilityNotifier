@@ -37,7 +37,6 @@ class Notifier:
         msg = MIMEText(body)
         msg["Subject"] = subject
         msg["From"] = self.username
-        print(self.recipients[0])
         msg["To"] = ', '.join(self.recipients)
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
             smtp_server.login(self.username, self.password)

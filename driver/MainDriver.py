@@ -5,6 +5,12 @@ from notifier.Notifier import Notifier
 from datetime import datetime
 
 
+def delay_1_hour():
+    now = datetime.now()
+    while abs(now.hour == datetime.now().hour):
+        pass
+
+
 class MainDriver:
     @staticmethod
     def run():
@@ -21,3 +27,4 @@ class MainDriver:
             is_available, when = dom_driver.check_availability()
             if is_available:
                 notifier.notify(when)
+            delay_1_hour()
